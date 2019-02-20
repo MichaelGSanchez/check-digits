@@ -1,30 +1,28 @@
 package edu.cnm.deepdive;
 
-import java.util.Scanner;
-import javafx.scene.transform.Scale;
-
 public class Check {
 
-  public static int digitSum(int a) {
+  private static final String OUTPUT_FORMAT =
+      "Input = %d; remainder = %d; digit sum = %d; remainder = %d.%n";
+  private static final int MODULUS = 9;
 
-    String b;
-    int c = 0;
-    b = Integer.toString(a);
-    for (int i = 0; i < b.length(); i++) {
-      c += b.charAt(i) - 48;
+  public static int digitSum(int input) {
+    int sum = 0;
+    String inStr = "" + input;
+    for (char c : inStr.toCharArray()) {
+      sum += c - '0';
     }
-    return c;
+    return sum;
   }
+
   public static void main(String[] args) {
-    Scanner scanner = new Scanner(System.in);
-    System.out.print("Enter a number:");
-    int a = scanner.nextInt();
-    Check.digitSum(a);
-    System.out.println(digitSum(a));
-    System.out.println(digitSum(a) / 9);
-    System.out.println(digitSum(a));
-    System.out.println(digitSum(a) / 9);
+    int input = Integer.parseInt(args[0]);
+    int sum = digitSum(input);
+    System.out.printf(OUTPUT_FORMAT, input, input % MODULUS, sum, sum % MODULUS);
   }
+
+
+
 
   public static int reducedDigitSum(int input) {
 
